@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Бронирование билетов в кино</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container cinema">
+      <div class="section header_p cinema">
+        <h1>Расположение зала</h1>
+      </div>
+      <div class="section scoreboard_header cinema">
+        <div class="select_date"></div>
+        <div class="select_time"></div>
+        <button id="check_availability">Проверить наличие</button>
+      </div>
+
+      <div class="section scoreboard_body cinema">
+        <p>Выберите дату и время сеанса и проверьте наличие мест</p>
+        <p></p>
+      </div>
+
+      <div class="section scoreboard_footer cinema">
+        <button id="regist">Забронировать билеты</button>
+      </div>
+    </div>
+
+    <script id="date_list" type="text/x-handlebars-template">
+      <select name='' id='date'>
+        {{#each array}}
+          <option value='{{date}}'>{{date}}</option>
+        {{/each}}
+      </select>
+    </script>
+
+    <script id="time_list" type="text/x-handlebars-template">
+      <select name='' id='time'>
+        {{#each array}}
+          <option value='{{time}}'>{{time}}</option>
+        {{/each}}
+      </select>
+    </script>
+
+    <script id="place_list" type="text/x-handlebars-template">
+      <div class='places cinema' id='places_contain'>
+        <p>Было занято уже {{count}} мест(а)</p>
+        {{#each array}}
+          <div class='place' position='{{id}}' verb='{{busy}}'></div>
+        {{/each}}
+      </div>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
